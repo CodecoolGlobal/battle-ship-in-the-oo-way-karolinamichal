@@ -72,16 +72,16 @@ public class Ocean{
     }
 
     private void addReservedFields(int x, int y, ArrayList<Square> arrayFieldsReserved){
-        //ArrayList<Square> arrayFieldsReserved = new ArrayList<Square>();
+
         int[] arrayCol = new int[]{y+1, y+1, y, y-1, y-1, y-1, y, y+1};
         int[] arrayRow = new int[]{x, x+1, x+1, x+1, x, x-1, x-1, x-1};
         
         for(int index = 0; index < 8; index++){
-            if(arrayCol[index] < WIDTH && arrayRow[index] < HEIGHT && arrayCol[index] >= 0 && arrayRow[index] >= 0)
+            if(arrayCol[index] < WIDTH && arrayRow[index] < HEIGHT && arrayCol[index] >= 0 
+               && arrayRow[index] >= 0)
                 arrayFieldsReserved.add(board.get(arrayCol[index]).get(arrayRow[index]));
         }
 
-       // return arrayFieldsReserved;
     }
 
     public boolean validateHangOffEdge(int x, int y, boolean isHorizontal, int length){
@@ -122,10 +122,6 @@ public class Ocean{
             }
         }
         System.out.println("Pozytyw");
-        return true;
-    }
-
-    public boolean validateNotTouch(int x, int y, boolean isHorizontal, int length){
         return true;
     }
     
