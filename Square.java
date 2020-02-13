@@ -1,6 +1,7 @@
 public class Square{
     private boolean isShip;
     private boolean isReserved;
+    private boolean isChosen;
 
     public Square(){
         //System.out.print(" 1 ");
@@ -20,5 +21,13 @@ public class Square{
 
     public void setReserved(){
         isReserved = true;
+    }
+
+    public boolean getIsChosen(){
+        return isChosen;
+    }
+
+    public void setChosen(){
+        isChosen = true;
     }
 }
