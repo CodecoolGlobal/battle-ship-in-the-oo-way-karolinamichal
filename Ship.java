@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Ship {
     
     //private int
-    private ArrayList<Square> listSquareOfShip; 
+    private List<Square> listSquareOfShip;
     
     public Ship(ArrayList<Square> arraySquareNewShip, ArrayList<Square> arrayFieldsReserved){
+        listSquareOfShip = new ArrayList<Square>();
         for(Square square : arraySquareNewShip){
             square.setShip();
             listSquareOfShip.add(square);
