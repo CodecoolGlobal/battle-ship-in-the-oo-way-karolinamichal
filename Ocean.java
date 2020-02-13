@@ -5,15 +5,18 @@ public class Ocean{
     ArrayList<ArrayList<Square>> board;
     ArrayList<Ship> shipsArray;
 
+    final static int WIDTH = 10;
+    final static int HEIGHT = 10;
 
-    // x = 10 y = 8
-    public Ocean(int x, int y){
+
+    
+    public Ocean(){
         this.shipsArray = new ArrayList<Ship>();
         this.board = new ArrayList<ArrayList<Square>>();
-        for(int iRow = 0; iRow < y; iRow++ ){
+        for(int iRow = 0; iRow < HEIGHT; iRow++ ){
             ArrayList<Square> row = new ArrayList<Square>();
             
-            for(int iCol = 0; iCol < x; iCol++ ){
+            for(int iCol = 0; iCol < WIDTH; iCol++ ){
                 Square newSquare = new Square();
                 row.add(newSquare);
             }
@@ -32,7 +35,12 @@ public class Ocean{
         }
     }
 
-    public void addShip(int x, int y, boolean isHorizontal, int length){
+    public boolean addShip(int x, int y, boolean isHorizontal, int length){
+        boolean isValid = validateShip(x, y, isHorizontal, length);
+
+        if(!isValid){
+            return false;
+        }
         ArrayList<Square> arraySquare = new ArrayList<Square>();
         if(isHorizontal){
             for(int index = 0; index < length; index++){
@@ -47,9 +55,26 @@ public class Ocean{
         Ship newShip = new Ship(arraySquare);
         shipsArray.add(newShip);
 
-      //  return newShip;
-      //  board.get(x).get(y);
+        return true;
 
+    }
+
+    public boolean validateShip(int x, int y, boolean isHorizontal, int length){
+        if(x < 0 || y < 0 ||  x > WIDTH || y > HEIGHT){
+            return false;
+        }
+
+        if(isHorizontal){
+            if(x+length > WIDTH){
+                return false;
+            }   
+        }
+        else{
+            if(y+length > HEIGHT){
+                return false;
+            }
+        }
+        return true;
     }
     
 }
