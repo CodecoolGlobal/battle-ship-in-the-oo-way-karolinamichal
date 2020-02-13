@@ -28,7 +28,7 @@ public class Ocean{
     public void printOcean(){
         for(ArrayList<Square> row : board){
             for(Square singleSquare : row){
-                String symbol = (singleSquare.getIsReserved()) ? " x " : " . ";
+                String symbol = singleSquare.getIsShip() ? " x " : " . ";
                 System.out.print(symbol);               
             }
             System.out.println("");
@@ -60,6 +60,15 @@ public class Ocean{
 
         return true;
 
+    }
+
+    public boolean hasLost(){
+        for(Ship ship: shipsArray){
+            if(!ship.isSunk()){
+                return false;
+            }
+        }
+        return true;
     }
 
     private void addReservedFields(int x, int y, ArrayList<Square> arrayFieldsReserved){
