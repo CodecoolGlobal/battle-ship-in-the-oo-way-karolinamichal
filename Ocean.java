@@ -9,7 +9,7 @@ public class Ocean{
     // x = 10 y = 8
     public Ocean(int x, int y){
         this.shipsArray = new ArrayList<Ship>();
-        this.board = new ArrayList<ArrayList<Square>>(10);
+        this.board = new ArrayList<ArrayList<Square>>();
         for(int iRow = 0; iRow < y; iRow++ ){
             ArrayList<Square> row = new ArrayList<Square>();
             
