@@ -36,7 +36,8 @@ public class Ocean{
     }
 
     public boolean addShip(int x, int y, boolean isHorizontal, int length){
-        boolean isValid = validateShip(x, y, isHorizontal, length);
+        boolean isValid = validateHangOffEdge(x, y, isHorizontal, length);
+        isValid = validateOverlap(x, y, isHorizontal, length);
 
         if(!isValid){
             return false;
@@ -59,7 +60,7 @@ public class Ocean{
 
     }
 
-    public boolean validateShip(int x, int y, boolean isHorizontal, int length){
+    public boolean validateHangOffEdge(int x, int y, boolean isHorizontal, int length){
         if(x < 0 || y < 0 ||  x > WIDTH || y > HEIGHT){
             return false;
         }
@@ -74,6 +75,29 @@ public class Ocean{
                 return false;
             }
         }
+        return true;
+    }
+
+    public boolean validateOverlap(int x, int y, boolean isHorizontal, int length){
+        if(isHorizontal){
+            for(int index = 0; index < length ; index++){
+                if(board.get(y).get(x + index).getIsShip()){
+                    System.out.println("Negatyw");
+                    return false;
+                }
+            
+            }
+        }
+        else{
+            for(int index = 0; index < length ; index++){
+                if(board.get(y + index).get(x).getIsShip()){
+                    System.out.println("Negatyw");
+                    return false;
+                }
+            
+            }
+        }
+        System.out.println("Pozytyw");
         return true;
     }
     
