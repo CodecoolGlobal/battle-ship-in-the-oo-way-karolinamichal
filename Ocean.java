@@ -28,7 +28,7 @@ public class Ocean{
     public void printOcean(){
         for(ArrayList<Square> row : board){
             for(Square singleSquare : row){
-                String symbol = (singleSquare.getIsShip()) ? " x " : " . ";
+                String symbol = (singleSquare.getIsReserved()) ? " x " : " . ";
                 System.out.print(symbol);               
             }
             System.out.println("");
@@ -47,27 +47,12 @@ public class Ocean{
         if(isHorizontal){
             for(int index = 0; index < length; index++){
                 arraySquare.add(board.get(y).get(x+index));
-                arrayFieldsReserved.add(board.get(y+1).get(x+index));
-                arrayFieldsReserved.add(board.get(y+1).get(x+index+1));
-                arrayFieldsReserved.add(board.get(y).get(x+index+1));
-                arrayFieldsReserved.add(board.get(y-1).get(x+index+1));
-                arrayFieldsReserved.add(board.get(y-1).get(x+index));
-                arrayFieldsReserved.add(board.get(y-1).get(x+index-1));
-                arrayFieldsReserved.add(board.get(y-1).get(x+index));
-                arrayFieldsReserved.add(board.get(y-1).get(x+index+1));
-
+                addReservedFields(x+index, y, arrayFieldsReserved);
             }
         }else{
             for(int index = 0; index < length; index++){
                 arraySquare.add(board.get(y+index).get(x));
-                arrayFieldsReserved.add(board.get(y+1+index).get(x));
-                arrayFieldsReserved.add(board.get(y+1+index).get(x+1));
-                arrayFieldsReserved.add(board.get(y+index).get(x+1));
-                arrayFieldsReserved.add(board.get(y-1+index).get(x+1));
-                arrayFieldsReserved.add(board.get(y-1+index).get(x));
-                arrayFieldsReserved.add(board.get(y-1+index).get(x-1));
-                arrayFieldsReserved.add(board.get(y-1+index).get(x));
-                arrayFieldsReserved.add(board.get(y-1+index).get(x+1));
+                addReservedFields(x, y+ index, arrayFieldsReserved);
             }
         }
         Ship newShip = new Ship(arraySquare, arrayFieldsReserved);
@@ -75,6 +60,19 @@ public class Ocean{
 
         return true;
 
+    }
+
+    private void addReservedFields(int x, int y, ArrayList<Square> arrayFieldsReserved){
+        //ArrayList<Square> arrayFieldsReserved = new ArrayList<Square>();
+        int[] arrayCol = new int[]{y+1, y+1, y, y-1, y-1, y-1, y, y+1};
+        int[] arrayRow = new int[]{x, x+1, x+1, x+1, x, x-1, x-1, x-1};
+        
+        for(int index = 0; index < 8; index++){
+            if(arrayCol[index] < WIDTH && arrayRow[index] < HEIGHT && arrayCol[index] >= 0 && arrayRow[index] >= 0)
+                arrayFieldsReserved.add(board.get(arrayCol[index]).get(arrayRow[index]));
+        }
+
+       // return arrayFieldsReserved;
     }
 
     public boolean validateHangOffEdge(int x, int y, boolean isHorizontal, int length){
