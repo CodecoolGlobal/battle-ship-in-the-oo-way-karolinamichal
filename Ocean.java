@@ -43,17 +43,34 @@ public class Ocean{
             return false;
         }
         ArrayList<Square> arraySquare = new ArrayList<Square>();
+        ArrayList<Square> arrayFieldsReserved = new ArrayList<Square>();
         if(isHorizontal){
             for(int index = 0; index < length; index++){
                 arraySquare.add(board.get(y).get(x+index));
-                
+                arrayFieldsReserved.add(board.get(y+1).get(x+index));
+                arrayFieldsReserved.add(board.get(y+1).get(x+index+1));
+                arrayFieldsReserved.add(board.get(y).get(x+index+1));
+                arrayFieldsReserved.add(board.get(y-1).get(x+index+1));
+                arrayFieldsReserved.add(board.get(y-1).get(x+index));
+                arrayFieldsReserved.add(board.get(y-1).get(x+index-1));
+                arrayFieldsReserved.add(board.get(y-1).get(x+index));
+                arrayFieldsReserved.add(board.get(y-1).get(x+index+1));
+
             }
         }else{
             for(int index = 0; index < length; index++){
                 arraySquare.add(board.get(y+index).get(x));
+                arrayFieldsReserved.add(board.get(y+1+index).get(x));
+                arrayFieldsReserved.add(board.get(y+1+index).get(x+1));
+                arrayFieldsReserved.add(board.get(y+index).get(x+1));
+                arrayFieldsReserved.add(board.get(y-1+index).get(x+1));
+                arrayFieldsReserved.add(board.get(y-1+index).get(x));
+                arrayFieldsReserved.add(board.get(y-1+index).get(x-1));
+                arrayFieldsReserved.add(board.get(y-1+index).get(x));
+                arrayFieldsReserved.add(board.get(y-1+index).get(x+1));
             }
         }
-        Ship newShip = new Ship(arraySquare);
+        Ship newShip = new Ship(arraySquare, arrayFieldsReserved);
         shipsArray.add(newShip);
 
         return true;
@@ -81,7 +98,7 @@ public class Ocean{
     public boolean validateOverlap(int x, int y, boolean isHorizontal, int length){
         if(isHorizontal){
             for(int index = 0; index < length ; index++){
-                if(board.get(y).get(x + index).getIsShip()){
+                if(board.get(y).get(x + index).getIsShip() || board.get(y).get(x + index).getIsReserved()){
                     System.out.println("Negatyw");
                     return false;
                 }
@@ -90,7 +107,7 @@ public class Ocean{
         }
         else{
             for(int index = 0; index < length ; index++){
-                if(board.get(y + index).get(x).getIsShip()){
+                if(board.get(y + index).get(x).getIsShip() || board.get(y + index).get(x).getIsReserved()){
                     System.out.println("Negatyw");
                     return false;
                 }
@@ -98,6 +115,10 @@ public class Ocean{
             }
         }
         System.out.println("Pozytyw");
+        return true;
+    }
+
+    public boolean validateNotTouch(int x, int y, boolean isHorizontal, int length){
         return true;
     }
     
