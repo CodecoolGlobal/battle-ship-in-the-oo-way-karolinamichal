@@ -1,23 +1,53 @@
 public class Game{
     private boolean hasStarted; //false jeśli jesteśmy w fazie przygtowań, true gdy rozpocznie się rozgrywka
+    private Player currentPlayer;
+    private Player player1;
+    private Player player2;
+    public View view = new View();
 
-    public Game(){ // tu na razie przeniosłam wszystko z maina, ale te rzeczy trzeba będzie "rozlokować" po konkretnych metodach
+    public Game(){ 
         hasStarted = false;
-        Ocean myOcean = new Ocean();
-        myOcean.addShip(0, 0, false, 1);
-        myOcean.addShip(0, 9, false, 1);
-        myOcean.addShip(0, 9, false, 1);
-        myOcean.addShip(9, 0, false, 1);
-        myOcean.addShip(9, 9, false, 1);
+        // 
         
-        View view = new View();
-        view.printOcean(myOcean, this);
+        
+        // view.printOcean(myOcean, this);
+        prepareToGame();
+        playGame();
     }
 
-    // tu możemy zrobić 2 metody: prepare() (która odpowiada za ustawianie statków na planszy) 
-    // oraz play() (która odpowiada za grę)
+    public void prepareToGame() {
+        player1 = new Player();
+        player2 = new Player();
+        currentPlayer = player1;
+        // tu jakieś metody wywołane w celu "postawienia" statków przez playera
+
+        // do celów testowych:
+        view.printOcean(player1.getOcean(), this);
+        currentPlayer.getOcean().addShip(0, 0, false, 1);
+        currentPlayer.getOcean().addShip(0, 9, false, 1);
+        currentPlayer.getOcean().addShip(0, 9, false, 1);
+        currentPlayer.getOcean().addShip(9, 0, false, 1);
+        currentPlayer.getOcean().addShip(9, 9, false, 1);
+        view.printOcean(player1.getOcean(), this);
+    }
+
+    public void playGame() {
+        // główna pętla odpowiadająca za rozgrywkę ?
+        hasStarted = true;
+        
+        // do celów testowych:
+        view.printOcean(player1.getOcean(), this);
+    }
 
     public boolean getHasStarted() {
         return hasStarted;
+    }
+
+    public void changeCurrentPlayer() {
+        if (currentPlayer.getName() == player1.getName()) {
+            currentPlayer = player2;
+        } else {
+            currentPlayer = player1;
+        }
     }
 }
