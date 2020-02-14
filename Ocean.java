@@ -23,15 +23,15 @@ public class Ocean{
 
     }
 
-    public void printOcean(){
-        for(ArrayList<Square> row : board){
-            for(Square singleSquare : row){
-                String symbol = singleSquare.getIsShip() ? " x " : " . ";
-                System.out.print(symbol);               
-            }
-            System.out.println("");
-        }
-    }
+    // public void printOcean(){
+    //     for(ArrayList<Square> row : board){
+    //         for(Square singleSquare : row){
+    //             String symbol = singleSquare.getIsShip() ? " x " : " . ";
+    //             System.out.print(symbol);               
+    //         }
+    //         System.out.println("");
+    //     }
+    // }
 
     public boolean addShip(int x, int y, boolean isHorizontal, int length){
         boolean isValid = validateNotHangOffEdge(x, y, isHorizontal, length);
@@ -106,4 +106,15 @@ public class Ocean{
         return true;
     }
     
+    public String toString(Game currentGame) {
+        String boardString = "";
+
+        for(ArrayList<Square> row : board){
+            for(Square singleSquare : row){
+                boardString += singleSquare.toString(currentGame);
+            }
+            boardString += "\n";
+        }
+        return boardString;
+    }
 }

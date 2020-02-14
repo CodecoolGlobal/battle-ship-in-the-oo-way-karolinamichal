@@ -4,7 +4,9 @@ public class Square{
     private boolean isChosen;
 
     public Square(){
-        //System.out.print(" 1 ");
+        isShip = false;
+        isReserved = false;
+        isChosen = false;
     }
 
     public boolean getIsShip(){
@@ -30,4 +32,22 @@ public class Square{
     public void setChosen(){
         isChosen = true;
     }
+
+    public String toString(Game currentGame){ 
+        String symbol;
+        if (currentGame.getHasStarted()) {
+            if (isShip && isChosen) {
+                symbol = " x ";
+            } else if (!isShip && isChosen) {
+                symbol = " o ";
+            } else {
+                symbol = " . ";
+            }
+        } else {
+            symbol = (isShip) ? " x " : " . ";
+        }
+        return symbol;
+    }
+        // nie wiem czy to dobrze, że poszczególne pole ma dostęp do obiektu Game.
+        // jak masz jakiś inny pomysł, jak zróżnicować drukowanie pola w zależności od statusu gry to się nie krępuj:)
 }
