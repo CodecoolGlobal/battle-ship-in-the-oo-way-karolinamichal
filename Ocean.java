@@ -7,8 +7,6 @@ public class Ocean{
 
     final static int WIDTH = 10;
     final static int HEIGHT = 10;
-
-
     
     public Ocean(){
         this.shipsArray = new ArrayList<Ship>();
@@ -36,25 +34,35 @@ public class Ocean{
     }
 
     public boolean addShip(int x, int y, boolean isHorizontal, int length){
-        boolean isValid = validateHangOffEdge(x, y, isHorizontal, length);
-        isValid = validateOverlap(x, y, isHorizontal, length);
+        boolean isValid = validateNotHangOffEdge(x, y, isHorizontal, length);
+        isValid = validateNotOverlap(x, y, isHorizontal, length);
 
         if(!isValid){
             return false;
         }
         ArrayList<Square> arraySquare = new ArrayList<Square>();
         ArrayList<Square> arrayFieldsReserved = new ArrayList<Square>();
-        if(isHorizontal){
-            for(int index = 0; index < length; index++){
-                arraySquare.add(board.get(y).get(x+index));
-                addReservedFields(x+index, y, arrayFieldsReserved);
-            }
-        }else{
-            for(int index = 0; index < length; index++){
-                arraySquare.add(board.get(y+index).get(x));
-                addReservedFields(x, y+ index, arrayFieldsReserved);
-            }
+        
+
+        for(int index = 0; index < length; index++){
+            int[] coordinates = (isHorizontal) ? new int[]{y, x+index} : new int[]{y+index, x};
+            arraySquare.add(board.get(coordinates[0]).get(coordinates[1]));
+            addReservedFields(coordinates[1], coordinates[0], arrayFieldsReserved);
         }
+        
+        
+
+        // if(isHorizontal){
+        //     for(int index = 0; index < length; index++){
+        //         arraySquare.add(board.get(y).get(x+index));
+        //         addReservedFields(x+index, y, arrayFieldsReserved);
+        //     }
+        // }else{
+        //     for(int index = 0; index < length; index++){
+        //         arraySquare.add(board.get(y+index).get(x));
+        //         addReservedFields(x, y+ index, arrayFieldsReserved);
+        //     }
+        // }
         Ship newShip = new Ship(arraySquare, arrayFieldsReserved);
         shipsArray.add(newShip);
 
@@ -84,7 +92,7 @@ public class Ocean{
 
     }
 
-    public boolean validateHangOffEdge(int x, int y, boolean isHorizontal, int length){
+    public boolean validateNotHangOffEdge(int x, int y, boolean isHorizontal, int length){
         if(x < 0 || y < 0 ||  x > WIDTH || y > HEIGHT){
             return false;
         }
@@ -102,14 +110,13 @@ public class Ocean{
         return true;
     }
 
-    public boolean validateOverlap(int x, int y, boolean isHorizontal, int length){
+    public boolean validateNotOverlap(int x, int y, boolean isHorizontal, int length){
         if(isHorizontal){
             for(int index = 0; index < length ; index++){
                 if(board.get(y).get(x + index).getIsShip() || board.get(y).get(x + index).getIsReserved()){
                     System.out.println("Negatyw");
                     return false;
                 }
-            
             }
         }
         else{
@@ -118,7 +125,6 @@ public class Ocean{
                     System.out.println("Negatyw");
                     return false;
                 }
-            
             }
         }
         System.out.println("Pozytyw");
