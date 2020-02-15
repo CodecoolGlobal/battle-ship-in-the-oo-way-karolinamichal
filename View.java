@@ -8,4 +8,9 @@ public class View{
         // tu będzie można dodać drukowanie nagłówka, literek ABC... etc.
         System.out.print(currentOcean.toString(currentGame));
     }
+
+    public void clearScreen() {  
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();  
+    }
 }
