@@ -8,7 +8,7 @@ public class View {
 
     public void printOcean(Ocean currentOcean, Game currentGame) {
         // tu będzie można dodać drukowanie nagłówka, literek ABC... etc.
-        System.out.print(currentOcean.toString(currentGame));
+        System.out.println(currentOcean.toString(currentGame));
     }
 
     public String inputFromUser(String textToView){
