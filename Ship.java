@@ -26,4 +26,14 @@ public class Ship {
         }
         return true;
     }
+
+    public boolean isShooted(Square squareWithCoordinates){
+        squareWithCoordinates.setChosen();
+        for(Square square: listSquareOfShip){
+            if(square == squareWithCoordinates){
+                return true;
+            }
+        }
+        return false;
+    }
 }
