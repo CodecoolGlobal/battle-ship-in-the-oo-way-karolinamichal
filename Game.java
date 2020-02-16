@@ -34,9 +34,11 @@ public class Game{
     public void playGame() {
         // główna pętla odpowiadająca za rozgrywkę ?
         hasStarted = true;
-        
+
+        currentPlayer.getOcean().shoot(0,0);
+        currentPlayer.getOcean().shoot(0,1);
         // do celów testowych:
-        view.printOcean(player1.getOcean(), this);
+        view.printOcean(currentPlayer.getOcean(), this);
     }
 
     public boolean getHasStarted() {
