@@ -34,9 +34,10 @@ public class Game{
     public void playGame() {
         // główna pętla odpowiadająca za rozgrywkę ?
         hasStarted = true;
-
-        currentPlayer.getOcean().shoot(0,0);
-        currentPlayer.getOcean().shoot(0,1);
+        int[] coordinates = chooseFieldToStrike("1G");
+        currentPlayer.getOcean().shoot(coordinates[0], coordinates[1]);
+        currentPlayer.getOcean().shoot(0, 0);
+        currentPlayer.getOcean().shoot(0, 1);
         // do celów testowych:
         view.printOcean(currentPlayer.getOcean(), this);
     }
@@ -51,5 +52,24 @@ public class Game{
         } else {
             currentPlayer = player1;
         }
+    }
+
+    public int[] chooseFieldToStrike(String coordinatesAsString){
+        String[] alfabet = new String[] {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
+        int lenghtArrayOfAlfabet = alfabet.length;
+        int X_INDEX = 1;
+        int Y_INDEX = 0;
+        int[] coordinatesAsInt = new int[] {1, 2};
+        String xAsString = coordinatesAsString.substring(0,1);
+        String yAsString = coordinatesAsString.substring(1,2);
+        coordinatesAsInt[X_INDEX] = Integer.parseInt(xAsString);
+        for(int index = 0; index < lenghtArrayOfAlfabet; index++){
+            if(yAsString.equals(alfabet[index])){
+                coordinatesAsInt[Y_INDEX] = index;
+            }
+        }
+
+
+        return coordinatesAsInt;
     }
 }
