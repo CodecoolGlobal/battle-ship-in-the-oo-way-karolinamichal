@@ -7,29 +7,28 @@ public class Game{
 
     public Game(){ 
         hasStarted = false;
-        // 
-        
-        
-        // view.printOcean(myOcean, this);
         prepareToGame();
         playGame();
     }
 
     public void prepareToGame() {
-        player1 = new Player();
-        player2 = new Player();
+        player1 = new Player("first");
+        player2 = new Player("second");
+        
         currentPlayer = player1;
         // tu jakieś metody wywołane w celu "postawienia" statków przez playera
 
         // do celów testowych:
-        view.printOcean(player1.getOcean(), this);
+        view.printOcean(player1.getOcean(),hasStarted);
         currentPlayer.getOcean().addShip(0, 0, false, 1);
         currentPlayer.getOcean().addShip(0, 9, false, 1);
         currentPlayer.getOcean().addShip(0, 9, false, 1);
         currentPlayer.getOcean().addShip(9, 0, false, 1);
         currentPlayer.getOcean().addShip(9, 9, false, 1);
-        view.printOcean(player1.getOcean(), this);
+        view.printOcean(player1.getOcean(), hasStarted);
     }
+
+    
 
     public void playGame() {
         // główna pętla odpowiadająca za rozgrywkę ?
@@ -39,7 +38,7 @@ public class Game{
         currentPlayer.getOcean().shoot(0, 0);
         currentPlayer.getOcean().shoot(0, 1);
         // do celów testowych:
-        view.printOcean(currentPlayer.getOcean(), this);
+        view.printOcean(currentPlayer.getOcean(), hasStarted);
     }
 
     public boolean getHasStarted() {

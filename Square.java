@@ -33,9 +33,9 @@ public class Square{
         isChosen = true;
     }
 
-    public String toString(Game currentGame){ 
+    public String toString(boolean hasGameStarted){ 
         String symbol;
-        if (currentGame.getHasStarted()) {
+        if (hasGameStarted) {
             if (isShip && isChosen) {
                 symbol = " x ";
             } else if (!isShip && isChosen) {
@@ -48,6 +48,4 @@ public class Square{
         }
         return symbol;
     }
-        // nie wiem czy to dobrze, że poszczególne pole ma dostęp do obiektu Game.
-        // jak masz jakiś inny pomysł, jak zróżnicować drukowanie pola w zależności od statusu gry to się nie krępuj:)
 }

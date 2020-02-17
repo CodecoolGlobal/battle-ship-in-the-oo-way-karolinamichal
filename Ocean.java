@@ -116,13 +116,13 @@ public class Ocean{
         return true;
     }
     
-    public String toString(Game currentGame) {
+    public String toString(boolean hasGameStarted) {
         String boardString = "     A  B  C  D  E  F  G  H  I  J \n";
         int index = 1;
         for(ArrayList<Square> row : board){
             boardString += String.format(" %2d ", index);
             for(Square singleSquare : row){
-                boardString += singleSquare.toString(currentGame);
+                boardString += singleSquare.toString(hasGameStarted);
             }
             boardString += "\n";
             index += 1;
