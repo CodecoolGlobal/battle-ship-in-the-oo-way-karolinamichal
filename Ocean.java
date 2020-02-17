@@ -4,6 +4,7 @@ public class Ocean{
 
     ArrayList<ArrayList<Square>> board;
     ArrayList<Ship> shipsArray;
+    Ship ship;
 
     final static int WIDTH = 10;
     final static int HEIGHT = 10;
@@ -21,6 +22,15 @@ public class Ocean{
             this.board.add(row);
         }
 
+    }
+
+    public boolean shoot(int x, int y){
+        for(Ship ship: shipsArray){
+            if(ship.isShooted(board.get(y).get(x))){
+                return true;
+            }
+        }
+        return false;
     }
 
     // public void printOcean(){
@@ -107,13 +117,15 @@ public class Ocean{
     }
     
     public String toString(Game currentGame) {
-        String boardString = "";
-
+        String boardString = "     A  B  C  D  E  F  G  H  I  J \n";
+        int index = 1;
         for(ArrayList<Square> row : board){
+            boardString += String.format(" %2d ", index);
             for(Square singleSquare : row){
                 boardString += singleSquare.toString(currentGame);
             }
             boardString += "\n";
+            index += 1;
         }
         return boardString;
     }

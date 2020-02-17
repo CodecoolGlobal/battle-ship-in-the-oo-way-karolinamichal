@@ -2,6 +2,7 @@ public class Player{
     
     private String name;
     private Ocean ocean;
+    private View view;
 
     public Player(){
         name = askForName();
@@ -10,7 +11,8 @@ public class Player{
 
     private String askForName() {
         // tutaj metoda pytająca o imię i walidująca input
-        String name = "Mariusz";
+        view = new View();
+        String name = view.inputFromUser("Please inser name user:");
         return name;
     }
 
