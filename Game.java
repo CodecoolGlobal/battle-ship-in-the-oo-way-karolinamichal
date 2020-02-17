@@ -62,7 +62,7 @@ public class Game{
         int[] coordinatesAsInt = new int[] {1, 2};
         String xAsString = coordinatesAsString.substring(0,1);
         String yAsString = coordinatesAsString.substring(1,2);
-        coordinatesAsInt[X_INDEX] = Integer.parseInt(xAsString);
+        coordinatesAsInt[X_INDEX] = Integer.parseInt(xAsString) - 1;
         for(int index = 0; index < lenghtArrayOfAlfabet; index++){
             if(yAsString.equals(alfabet[index])){
                 coordinatesAsInt[Y_INDEX] = index;
