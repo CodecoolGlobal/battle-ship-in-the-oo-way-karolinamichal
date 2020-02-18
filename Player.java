@@ -31,7 +31,11 @@ public class Player {
     }
 
     public boolean shoot(int[] coordinates){
-        return ocean.shoot(coordinates[0],coordinates[1]);
+        return ocean.isShoot(coordinates[0],coordinates[1]);
+    }
+
+    public boolean isSunk(int[] coordinates){
+        return ocean.isSunk(coordinates[0], coordinates[1]);
     }
 
     public void askForName(String num) {
