@@ -31,7 +31,7 @@ public class Ocean{
             }
         }
         return false;
-    }
+    } 
 
     public boolean addShip(int x, int y, boolean isHorizontal, int length){
         boolean isValid = validateNotHangOffEdge(x, y, isHorizontal, length);

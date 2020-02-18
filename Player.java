@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -22,7 +21,7 @@ public class Player {
         askForName(num);
         ocean = new Ocean();
         view = new View();
-        askForShips();
+        // askForShips(); <--- odkomentować do właściwej gry!!!
     }
 
     public void askForName(String num) {
