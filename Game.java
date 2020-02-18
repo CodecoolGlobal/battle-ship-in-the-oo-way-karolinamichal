@@ -27,12 +27,15 @@ public class Game{
         // currentPlayer.getOcean().shoot(coordinates[0], coordinates[1]);
         // currentPlayer.getOcean().shoot(0, 0);
         // currentPlayer.getOcean().shoot(0, 1);
-
+        String textToDisplay = "";
         while(!player1.hasLost() && !player2.hasLost()){
+            view.printText(String.format("Board of %s", currentPlayer.getName()));
             view.printOcean(currentPlayer.getOcean(), hasStarted);
             String coordinatesAsString = view.inputFromUser("Please insert a coordinates to attack");
             int[] coordinatesAsInt = translateFromStringToCoordinates(coordinatesAsString);
-            currentPlayer.shoot(coordinatesAsInt);
+            boolean wasShoot = currentPlayer.shoot(coordinatesAsInt);
+            textToDisplay = wasShoot ? "You hit!" : "You miss!" ;
+            view.printText(textToDisplay);
             changeCurrentPlayer();
         }
         
