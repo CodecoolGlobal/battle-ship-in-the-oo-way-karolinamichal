@@ -47,10 +47,11 @@ public class Game{
             }
             else{
                 changeCurrentPlayer();
+                view.inputFromUser("Press Enter to continue");
             }
         }
 
-        view.printText(String.format("Congratoulations %s! You Win!", currentPlayer.getName()));
+        view.printText(String.format("Congratoulations %s! You Win!", turnOfPlayer()));
         
         
         // change current player
