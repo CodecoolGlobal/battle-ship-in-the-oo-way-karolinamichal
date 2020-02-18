@@ -88,6 +88,11 @@ public class Game {
         String xAsString = (coordinatesAsString.length() > 2) ? coordinatesAsString.substring(0,2) : coordinatesAsString.substring(0,1);
         String yAsString = (coordinatesAsString.length() > 2) ? coordinatesAsString.substring(2) : coordinatesAsString.substring(1);
         
+        if(!isNumeric(xAsString)){
+            String temp = xAsString;
+            xAsString = yAsString;
+            yAsString = temp;
+        }
         coordinatesAsInt[X_INDEX] = Integer.parseInt(xAsString) - 1;
         for(int index = 0; index < lenghtArrayOfAlfabet; index++){
             if(yAsString.equals(alfabet[index])){
