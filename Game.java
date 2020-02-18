@@ -79,7 +79,30 @@ public class Game {
         }
     }
 
-    public int[] translateFromStringToCoordinates(String coordinatesAsString){
+    public boolean checkCoordinates(String coordinatesAsString){
+        Pattern pattern = Pattern.compile("([1-9][0]?[A-J])|([A-J][0-9][0]?)");
+        if (coordinatesAsString == null) {
+            return false; 
+        }
+        return pattern.matcher(coordinatesAsString).matches();
+    }
+
+    public String[] transformToCorrectCoordinates(String coordinatesAsString){
+        Pattern pattern = Pattern.compile("([1-9][0]?[A-J])");
+        String[] arrayCoordinates = new String[] {"", ""};
+
+        if(pattern.matcher(coordinatesAsString).matches()){
+            arrayCoordinates[0] = (coordinatesAsString.length() > 2) ? coordinatesAsString.substring(0,2) : coordinatesAsString.substring(0,1);
+            arrayCoordinates[1] = (coordinatesAsString.length() > 2) ? coordinatesAsString.substring(2) : coordinatesAsString.substring(1);
+        }else{
+            arrayCoordinates[0] = coordinatesAsString.substring(0,1);
+            arrayCoordinates[1] = coordinatesAsString.length() > 2 ? coordinatesAsString.substring(1,3) : coordinatesAsString.substring(1,2);
+        }        
+        
+        return arrayCoordinates;
+    }
+    
+    public int[] translateFromStringToCoordinates(String[] coordinatesAsString){
         String[] alfabet = new String[] {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
         int lenghtArrayOfAlfabet = alfabet.length;
         int X_INDEX = 1;
