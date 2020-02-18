@@ -21,7 +21,7 @@ public class Player {
         askForName(num);
         ocean = new Ocean();
         view = new View();
-        ocean.addShip(1,1,true, 2);
+        //ocean.addShip(1,1,true, 2);
         //askForShips();// <--- odkomentować do właściwej gry!!!
 
     }
