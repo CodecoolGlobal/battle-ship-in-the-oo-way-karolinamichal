@@ -64,7 +64,7 @@ public class Game {
             }
         }
 
-        view.printText(String.format("Congratoulations %s! You Win!", turnOfPlayer()));
+        view.printText(String.format("Congratoulations %s! You Won!", turnOfPlayer()));
         
         
         // change current player
