@@ -84,7 +84,7 @@ public class Game {
         int lenghtArrayOfAlfabet = alfabet.length;
         int X_INDEX = 1;
         int Y_INDEX = 0;
-        int[] coordinatesAsInt = new int[] {1, 2};
+        int[] coordinatesAsInt = new int[] {-1, -1};
         String xAsString = (coordinatesAsString.length() > 2) ? coordinatesAsString.substring(0,2) : coordinatesAsString.substring(0,1);
         String yAsString = (coordinatesAsString.length() > 2) ? coordinatesAsString.substring(2) : coordinatesAsString.substring(1);
         
