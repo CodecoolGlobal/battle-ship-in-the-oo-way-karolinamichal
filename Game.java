@@ -60,6 +60,14 @@ public class Game{
         return hasStarted;
     }
 
+    public String turnOfPlayer(){
+        if (currentPlayer == player1) {
+            return player2.getName();
+        } else {
+            return player1.getName();
+        }
+    }
+
     public void changeCurrentPlayer() {
         if (currentPlayer.getName() == player1.getName()) {
             currentPlayer = player2;
