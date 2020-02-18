@@ -1,4 +1,6 @@
-public class Game{
+import java.util.regex.Pattern;
+
+public class Game {
     private boolean hasStarted; //false jeśli jesteśmy w fazie przygtowań, true gdy rozpocznie się rozgrywka
     private Player currentPlayer;
     private Player player1;
@@ -94,5 +96,14 @@ public class Game{
         }
 
         return coordinatesAsInt;
+    }
+
+    public boolean isNumeric(String strNum) {
+        Pattern pattern = Pattern.compile("\\d+");
+
+        if (strNum == null) {
+            return false; 
+        }
+        return pattern.matcher(strNum).matches();
     }
 }
