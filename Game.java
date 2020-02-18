@@ -32,13 +32,24 @@ public class Game {
         // currentPlayer.getOcean().shoot(0, 0);
         // currentPlayer.getOcean().shoot(0, 1);
         String textToDisplay = "";
-        boolean isGamming = true; 
+        String coordinatesAsString = "";
+        String[] coordiateAsArray = new String[] {};
+        boolean isGamming = true;
+        boolean isIncorrectInput; 
         while(isGamming){
+            isIncorrectInput = true;
             view.clearScreen();
             view.printText(String.format("Turn of %s", turnOfPlayer()));
             view.printOcean(currentPlayer.getOcean(), hasStarted);
-            String coordinatesAsString = view.inputFromUser("Please insert a coordinates to attack");
-            int[] coordinatesAsInt = translateFromStringToCoordinates(coordinatesAsString);
+            while(isIncorrectInput){
+                coordinatesAsString = view.inputFromUser("Please insert a coordinates to attack");
+                if(checkCoordinates(coordinatesAsString)){
+                    isIncorrectInput = false;
+                }
+                coordiateAsArray = transformToCorrectCoordinates(coordinatesAsString);
+            }
+
+            int[] coordinatesAsInt = translateFromStringToCoordinates(coordiateAsArray);
             boolean wasShoot = currentPlayer.shoot(coordinatesAsInt);
             textToDisplay = wasShoot ? "You hit!" : "You miss!" ;
             wasShoot = currentPlayer.isSunk(coordinatesAsInt);
