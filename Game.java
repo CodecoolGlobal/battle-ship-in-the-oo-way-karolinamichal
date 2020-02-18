@@ -14,6 +14,8 @@ public class Game{
     public void prepareToGame() {
         player1 = new Player("first");
         player2 = new Player("second");
+        player1.getOcean().addShip(0, 0, true, 2);
+        player2.getOcean().addShip(0, 0, false, 2);
         
         currentPlayer = player1;
     }
