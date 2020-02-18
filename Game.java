@@ -20,14 +20,23 @@ public class Game{
 
     public void playGame() {
         hasStarted = true;
-        int[] coordinates = translateFromStringToCoordinates("3C");
-        System.out.println(coordinates[0]);
-        System.out.println(coordinates[1]);
-        currentPlayer.getOcean().shoot(coordinates[0], coordinates[1]);
-        currentPlayer.getOcean().shoot(0, 0);
-        currentPlayer.getOcean().shoot(0, 1);
         // do celów testowych:
-        view.printOcean(currentPlayer.getOcean(), hasStarted);
+        // int[] coordinates = translateFromStringToCoordinates("3C");
+        // System.out.println(coordinates[0]);
+        // System.out.println(coordinates[1]);
+        // currentPlayer.getOcean().shoot(coordinates[0], coordinates[1]);
+        // currentPlayer.getOcean().shoot(0, 0);
+        // currentPlayer.getOcean().shoot(0, 1);
+
+        while(!player1.hasLost() && !player2.hasLost()){
+            view.printOcean(currentPlayer.getOcean(), hasStarted);
+            String coordinatesAsString = view.inputFromUser("Please insert a coordinates to attack");
+            int[] coordinatesAsInt = translateFromStringToCoordinates(coordinatesAsString);
+            currentPlayer.shoot(coordinatesAsInt);
+            changeCurrentPlayer();
+        }
+        
+        
         // change current player
     }
 
