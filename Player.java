@@ -7,8 +7,8 @@ public class Player {
     private String name;
     private Ocean ocean;
     private View view;
-    private static HashMap<String, Integer> possibleShips;
-    static {
+    private HashMap<String, Integer> possibleShips;
+    {
         possibleShips = new HashMap<>();
         possibleShips.put("Carrier", 5);
         possibleShips.put("Battleship", 4);
@@ -21,7 +21,7 @@ public class Player {
         askForName(num);
         ocean = new Ocean();
         view = new View();
-        // askForShips(); <--- odkomentować do właściwej gry!!!
+        askForShips();// <--- odkomentować do właściwej gry!!!
     }
 
     public void askForName(String num) {
