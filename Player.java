@@ -21,7 +21,17 @@ public class Player {
         askForName(num);
         ocean = new Ocean();
         view = new View();
-        askForShips();// <--- odkomentować do właściwej gry!!!
+        ocean.addShip(1,1,true, 2);
+        //askForShips();// <--- odkomentować do właściwej gry!!!
+
+    }
+
+    public boolean hasLost(){
+        return ocean.hasLost();
+    }
+
+    public boolean shoot(int[] coordinates){
+        return ocean.shoot(coordinates[0],coordinates[1]);
     }
 
     public void askForName(String num) {
