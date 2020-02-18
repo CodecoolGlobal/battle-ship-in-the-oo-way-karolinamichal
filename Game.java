@@ -28,7 +28,9 @@ public class Game{
         // currentPlayer.getOcean().shoot(0, 0);
         // currentPlayer.getOcean().shoot(0, 1);
         String textToDisplay = "";
-        while(!player1.hasLost() && !player2.hasLost()){
+        boolean isGamming = true; 
+        while(isGamming){
+
             view.printText(String.format("Board of %s", currentPlayer.getName()));
             view.printOcean(currentPlayer.getOcean(), hasStarted);
             String coordinatesAsString = view.inputFromUser("Please insert a coordinates to attack");
@@ -38,8 +40,15 @@ public class Game{
             wasShoot = currentPlayer.isSunk(coordinatesAsInt);
             textToDisplay = wasShoot ? "Hit and sunk!": textToDisplay;
             view.printText(textToDisplay);
-            changeCurrentPlayer();
+            if(player1.hasLost() || player2.hasLost()){
+                isGamming = false;
+            }
+            else{
+                changeCurrentPlayer();
+            }
         }
+
+        view.printText(String.format("Congratoulations %s! You Win!", currentPlayer.getName()));
         
         
         // change current player
