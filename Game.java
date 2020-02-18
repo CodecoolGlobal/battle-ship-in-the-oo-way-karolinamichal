@@ -35,6 +35,8 @@ public class Game{
             int[] coordinatesAsInt = translateFromStringToCoordinates(coordinatesAsString);
             boolean wasShoot = currentPlayer.shoot(coordinatesAsInt);
             textToDisplay = wasShoot ? "You hit!" : "You miss!" ;
+            wasShoot = currentPlayer.isSunk(coordinatesAsInt);
+            textToDisplay = wasShoot ? "Hit and sunk!": textToDisplay;
             view.printText(textToDisplay);
             changeCurrentPlayer();
         }
