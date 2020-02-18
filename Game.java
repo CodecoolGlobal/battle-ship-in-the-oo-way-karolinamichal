@@ -16,24 +16,18 @@ public class Game{
         player2 = new Player("second");
         
         currentPlayer = player1;
-        // tu jakieś metody wywołane w celu "postawienia" statków przez playera
+        
 
         // do celów testowych:
-        view.printOcean(player1.getOcean(),hasStarted);
-        currentPlayer.getOcean().addShip(0, 0, false, 1);
-        currentPlayer.getOcean().addShip(0, 9, false, 1);
-        currentPlayer.getOcean().addShip(0, 9, false, 1);
-        currentPlayer.getOcean().addShip(9, 0, false, 1);
-        currentPlayer.getOcean().addShip(9, 9, false, 1);
-        view.printOcean(player1.getOcean(), hasStarted);
+        // view.printOcean(player1.getOcean(),hasStarted);
+        // currentPlayer.getOcean().addShip(9, 9, false, 1);
+        // view.printOcean(player1.getOcean(), hasStarted);
     }
-
-    
 
     public void playGame() {
         // główna pętla odpowiadająca za rozgrywkę ?
         hasStarted = true;
-        int[] coordinates = chooseFieldToStrike("1G");
+        int[] coordinates = translateFromStringToCoordinates("1G");
         currentPlayer.getOcean().shoot(coordinates[0], coordinates[1]);
         currentPlayer.getOcean().shoot(0, 0);
         currentPlayer.getOcean().shoot(0, 1);
@@ -53,21 +47,20 @@ public class Game{
         }
     }
 
-    public int[] chooseFieldToStrike(String coordinatesAsString){
+    public int[] translateFromStringToCoordinates(String coordinatesAsString){
         String[] alfabet = new String[] {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
         int lenghtArrayOfAlfabet = alfabet.length;
         int X_INDEX = 1;
         int Y_INDEX = 0;
         int[] coordinatesAsInt = new int[] {1, 2};
         String xAsString = coordinatesAsString.substring(0,1);
-        String yAsString = coordinatesAsString.substring(1,2);
+        String yAsString = (coordinatesAsString.length() > 2) ? coordinatesAsString.substring(1,3) : coordinatesAsString.substring(1,2);
         coordinatesAsInt[X_INDEX] = Integer.parseInt(xAsString) - 1;
         for(int index = 0; index < lenghtArrayOfAlfabet; index++){
             if(yAsString.equals(alfabet[index])){
                 coordinatesAsInt[Y_INDEX] = index;
             }
         }
-
 
         return coordinatesAsInt;
     }

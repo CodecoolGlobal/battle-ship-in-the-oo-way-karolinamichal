@@ -33,19 +33,11 @@ public class Ocean{
         return false;
     }
 
-    // public void printOcean(){
-    //     for(ArrayList<Square> row : board){
-    //         for(Square singleSquare : row){
-    //             String symbol = singleSquare.getIsShip() ? " x " : " . ";
-    //             System.out.print(symbol);               
-    //         }
-    //         System.out.println("");
-    //     }
-    // }
-
     public boolean addShip(int x, int y, boolean isHorizontal, int length){
         boolean isValid = validateNotHangOffEdge(x, y, isHorizontal, length);
-        isValid = validateNotOverlap(x, y, isHorizontal, length);
+        if (isValid == true) {
+            isValid = validateNotOverlap(x, y, isHorizontal, length);
+        }
 
         if(!isValid){
             return false;
@@ -102,17 +94,15 @@ public class Ocean{
         return true;
     }
 
-    public boolean validateNotOverlap(int x, int y, boolean isHorizontal, int length){
+    public boolean validateNotOverlap(int x, int y, boolean isHorizontal, int length) throws IllegalArgumentException {
         for(int index = 0; index < length; index++){
             
             int[] coordinates = (isHorizontal) ? new int[]{y, x+index} : new int[]{y+index, x};
             
-            if(board.get(coordinates[0]).get(coordinates[1]).getIsShip() || board.get(coordinates[0]).get(coordinates[1]).getIsReserved()){
-                System.out.println("Negatyw");
+            if(board.get(coordinates[0]).get(coordinates[1]).getIsShip() || board.get(coordinates[0]).get(coordinates[1]).getIsReserved()){   
                 return false;
             }
         }
-        System.out.println("Pozytyw");
         return true;
     }
     
