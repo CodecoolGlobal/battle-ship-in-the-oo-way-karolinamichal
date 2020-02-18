@@ -32,8 +32,8 @@ public class Game{
         String textToDisplay = "";
         boolean isGamming = true; 
         while(isGamming){
-
-            view.printText(String.format("Board of %s", currentPlayer.getName()));
+            view.clearScreen();
+            view.printText(String.format("Turn of %s", turnOfPlayer()));
             view.printOcean(currentPlayer.getOcean(), hasStarted);
             String coordinatesAsString = view.inputFromUser("Please insert a coordinates to attack");
             int[] coordinatesAsInt = translateFromStringToCoordinates(coordinatesAsString);
