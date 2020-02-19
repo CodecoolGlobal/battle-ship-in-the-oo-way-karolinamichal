@@ -3,7 +3,6 @@ import java.util.List;
 
 public class Ship {
     
-    //private int
     private List<Square> listSquareOfShip;
     
     public Ship(List<Square> arraySquareNewShip, List<Square> arrayFieldsReserved){
