@@ -38,7 +38,7 @@ public class Player {
         return ocean.isSunk(coordinates[0], coordinates[1]);
     }
 
-    public void askForName(String name) {
+    private void askForName(String name) {
         view = new View();
         view.clearScreen();
         this.name = view.inputFromUser(String.format("Please insert name of the %s user", name));
@@ -48,7 +48,7 @@ public class Player {
         }
     }
 
-    public void askForShips() { 
+    private void askForShips() { 
         while (possibleShips.size() > 0) {
             view.clearScreen();
             String title = String.format("%s - time to place your ships!", name);
@@ -71,7 +71,7 @@ public class Player {
         }
     }
     
-    public String getShipName() {
+    private String getShipName() {
         String shipName = view.inputFromUser("Please type in the name of the ship you choose");
         shipName = shipName.substring(0, 1).toUpperCase() + shipName.substring(1).toLowerCase();
         
@@ -83,7 +83,7 @@ public class Player {
         return shipName;
     }
 
-    public boolean getIsShipHorizontal() {
+    private boolean getIsShipHorizontal() {
         String order = "Please type H if you want your ship to be HORIZONTAL or V if VERTICAL";
         String position = view.inputFromUser(order).toUpperCase();
 
@@ -98,7 +98,7 @@ public class Player {
         return isHorizontal;
     }
 
-    public int[] getShipCoordinates() {
+    private int[] getShipCoordinates() {
         String order = "What is the starting point of your ship? Type it in '1A' format";
         String coordinates = view.inputFromUser(order).toUpperCase();
         String[] possibleNumbers = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
@@ -115,13 +115,13 @@ public class Player {
             firstSign = (coordinates.length() > 2) ? coordinates.substring(0,2) : coordinates.substring(0,1);
             secondSign = (coordinates.length() > 2) ? coordinates.substring(2) : coordinates.substring(1);
         }
-        
+
         int[] finalCoordinates = translateFromStringToCoordinates(coordinates);
 
         return finalCoordinates;
     }
 
-    public int[] translateFromStringToCoordinates(String coordinatesAsString){
+    private int[] translateFromStringToCoordinates(String coordinatesAsString){
         // skopiowałam tą funkcję z game() bo potrzebowałam jej tutaj
         String[] alfabet = new String[] {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
         int lenghtArrayOfAlfabet = alfabet.length;
