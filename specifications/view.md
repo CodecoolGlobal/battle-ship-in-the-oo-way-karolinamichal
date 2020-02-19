@@ -19,4 +19,13 @@ This class doesn't contain fields.
 
 3. clearScreen()
     * This method clear the terminal.
+
+4. printPossibleShips(HashMap<String, Integer> possibleShips)
+    * This method use to print element of Hashmap possibleShips.
+
+5. printTitle(String title)
+    * This method print String title as title format.
+    
+6. printText(String text)
+    * This method print title as normal text.
     
