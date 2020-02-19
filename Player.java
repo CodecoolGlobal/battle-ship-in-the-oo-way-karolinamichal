@@ -43,7 +43,7 @@ public class Player {
         view.clearScreen();
         this.name = view.inputFromUser(String.format("Please insert name of the %s user", name));
         while (name.length() < 1) {
-            System.out.println("Your name should consist of at least 1 character");
+            view.printText("Your name should consist of at least 1 character");
             this.name = view.inputFromUser(String.format("Please insert name of the %s user", name));
         }
     }
@@ -66,7 +66,7 @@ public class Player {
             if (isAdded) {
                 possibleShips.remove(shipName);
             } else {
-                System.out.println("You can't put your ship there. Try again!"); // może to dobre miejsce na łapanie wyjątków z addship?
+                view.printText("You can't put your ship there. Try again!"); // może to dobre miejsce na łapanie wyjątków z addship?
             }
         }
     }
