@@ -13,7 +13,7 @@ public class Game {
         playGame();
     }
 
-    public void prepareToGame() {
+    private void prepareToGame() {
         player1 = new Player("first");
         player2 = new Player("second");
         player1.getOcean().addShip(0, 0, true, 2);
@@ -22,7 +22,7 @@ public class Game {
         currentPlayer = player2;
     }
 
-    public void playGame() {
+    private void playGame() {
         hasStarted = true;
         String textToDisplay = "";
         String coordinatesAsString = "";
@@ -35,8 +35,8 @@ public class Game {
             int[] coordinatesAsInt = getCoordinates(coordinatesAsString);
 
             textToDisplay = shoot(coordinatesAsInt);
-
             view.printText(textToDisplay);
+
             if(player1.hasLost() || player2.hasLost()){
                 isGamming = false;
             }
@@ -77,7 +77,7 @@ public class Game {
         return hasStarted;
     }
 
-    public String turnOfPlayer(){
+    private String turnOfPlayer(){
         if (currentPlayer == player1) {
             return player2.getName();
         } else {
@@ -85,7 +85,7 @@ public class Game {
         }
     }
 
-    public void changeCurrentPlayer() {
+    private void changeCurrentPlayer() {
         if (currentPlayer.getName() == player1.getName()) {
             currentPlayer = player2;
         } else {
@@ -93,7 +93,7 @@ public class Game {
         }
     }
 
-    public boolean checkCoordinates(String coordinatesAsString){
+    private boolean checkCoordinates(String coordinatesAsString){
         Pattern pattern = Pattern.compile("([1-9][0]?[A-J])|([A-J][0-9][0]?)");
         if (coordinatesAsString == null) {
             return false; 
@@ -101,7 +101,7 @@ public class Game {
         return pattern.matcher(coordinatesAsString).matches();
     }
 
-    public String[] transformToCorrectCoordinates(String coordinatesAsString){
+    private String[] transformToCorrectCoordinates(String coordinatesAsString){
         Pattern pattern = Pattern.compile("([1-9][0]?[A-J])");
         String[] arrayCoordinates = new String[] {"", ""};
 
@@ -116,7 +116,7 @@ public class Game {
         return arrayCoordinates;
     }
     
-    public int[] translateFromStringToCoordinates(String[] coordinatesAsString){
+    private int[] translateFromStringToCoordinates(String[] coordinatesAsString){
         String[] alfabet = new String[] {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
         int lenghtArrayOfAlfabet = alfabet.length;
         int X_INDEX = 1;
@@ -140,7 +140,7 @@ public class Game {
         return coordinatesAsInt;
     }
 
-    public boolean isNumeric(String strNum) {
+    private boolean isNumeric(String strNum) {
         Pattern pattern = Pattern.compile("\\d+");
 
         if (strNum == null) {
