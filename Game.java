@@ -24,13 +24,6 @@ public class Game {
 
     public void playGame() {
         hasStarted = true;
-        // do celów testowych:
-        // int[] coordinates = translateFromStringToCoordinates("3C");
-        // System.out.println(coordinates[0]);
-        // System.out.println(coordinates[1]);
-        // currentPlayer.getOcean().shoot(coordinates[0], coordinates[1]);
-        // currentPlayer.getOcean().shoot(0, 0);
-        // currentPlayer.getOcean().shoot(0, 1);
         String textToDisplay = "";
         String coordinatesAsString = "";
         String[] coordiateAsArray = new String[] {};
@@ -65,9 +58,6 @@ public class Game {
         }
 
         view.printText(String.format("Congratoulations %s! You Won!", turnOfPlayer()));
-        
-        
-        // change current player
     }
 
     public boolean getHasStarted() {
