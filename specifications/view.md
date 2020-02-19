@@ -1,3 +1,5 @@
+__[back to README](../README.md)__
+
 # Description
 This class use to view a board game. 
 

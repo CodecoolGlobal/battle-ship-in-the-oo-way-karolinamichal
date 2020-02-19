@@ -1,3 +1,5 @@
+__[back to README](../README.md)__
+
 # Description
 This class use to run program. 
 
@@ -6,5 +8,5 @@ This class doesn't contain any fields
 
 # Methods
 1. main
-    * This method run the program.
+    * This method runs the program.
 

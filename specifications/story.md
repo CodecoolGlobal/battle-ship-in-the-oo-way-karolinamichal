@@ -1,3 +1,5 @@
+__[back to README](../README.md)__
+
 # Welcome to Battle ship!
 
 ## I would like invite you to play in our game Battleship!
