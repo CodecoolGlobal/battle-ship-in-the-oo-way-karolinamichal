@@ -2,13 +2,20 @@
 
 ## The story
 
-## Specification
+__[story](specifications/story.md)__
 
+## Specifications:
 
-__main__
+### __[main](specifications/main.md)__
 
-__square__
+### __[square](specifications/square.md)__
 
-__ship__
+### __[ship](specifications/ship.md)__
 
-__ocean__
+### __[ocean](specifications/ocean.md)__
+
+### __[game](specifications/game.md)__
+
+### __[player](specifications/player.md)__
+
+### __[view](specifications/view.md)__
