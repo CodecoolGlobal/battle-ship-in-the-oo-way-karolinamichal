@@ -26,24 +26,15 @@ public class Game {
         hasStarted = true;
         String textToDisplay = "";
         String coordinatesAsString = "";
-        String[] coordiateAsArray = new String[] {};
         boolean isGamming = true;
-        boolean isIncorrectInput; 
         while(isGamming){
-            isIncorrectInput = true;
             view.clearScreen();
             view.printText(String.format("Turn of %s", turnOfPlayer()));
             view.printOcean(currentPlayer.getOcean(), hasStarted);
-            while(isIncorrectInput){
-                coordinatesAsString = view.inputFromUser("Please insert a coordinates to attack");
-                if(checkCoordinates(coordinatesAsString)){
-                    isIncorrectInput = false;
-                }
-                coordiateAsArray = transformToCorrectCoordinates(coordinatesAsString);
-            }
 
-            int[] coordinatesAsInt = translateFromStringToCoordinates(coordiateAsArray);
+            int[] coordinatesAsInt = getCoordinates(coordinatesAsString);
             boolean wasShoot = currentPlayer.shoot(coordinatesAsInt);
+
             textToDisplay = wasShoot ? "You hit!" : "You miss!" ;
             wasShoot = currentPlayer.isSunk(coordinatesAsInt);
             textToDisplay = wasShoot ? "Hit and sunk!": textToDisplay;
@@ -58,6 +49,20 @@ public class Game {
         }
 
         view.printText(String.format("Congratoulations %s! You Won!", turnOfPlayer()));
+    }
+
+    private int[] getCoordinates(String coordinatesAsString){
+        String[] coordiateAsArray = new String[] {};
+        boolean isIncorrectInput = true;;
+        while(isIncorrectInput){
+            coordinatesAsString = view.inputFromUser("Please insert a coordinates to attack");
+            if(checkCoordinates(coordinatesAsString)){
+                isIncorrectInput = false;
+                coordiateAsArray = transformToCorrectCoordinates(coordinatesAsString);
+            }
+        }
+        int[] coordinatesAsInt = translateFromStringToCoordinates(coordiateAsArray);
+        return coordinatesAsInt;
     }
 
     public boolean getHasStarted() {
