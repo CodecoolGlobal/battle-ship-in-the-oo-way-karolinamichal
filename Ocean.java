@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Ocean{
 
-    ArrayList<ArrayList<Square>> board;
-    ArrayList<Ship> shipsArray;
+    List<ArrayList<Square>> board;
+    List<Ship> shipsArray;
     Ship ship;
 
     final static int WIDTH = 10;
@@ -53,8 +54,8 @@ public class Ocean{
         if(!isValid){
             return false;
         }
-        ArrayList<Square> arraySquare = new ArrayList<Square>();
-        ArrayList<Square> arrayFieldsReserved = new ArrayList<Square>();
+        List<Square> arraySquare = new ArrayList<Square>();
+        List<Square> arrayFieldsReserved = new ArrayList<Square>();
 
         for(int index = 0; index < length; index++){
             int[] coordinates = (isHorizontal) ? new int[]{y, x+index} : new int[]{y+index, x};
@@ -76,7 +77,7 @@ public class Ocean{
         return true;
     }
 
-    private void addReservedFields(int x, int y, ArrayList<Square> arrayFieldsReserved){
+    private void addReservedFields(int x, int y, List<Square> arrayFieldsReserved){
         int[] arrayCol = new int[]{y+1, y+1, y, y-1, y-1, y-1, y, y+1};
         int[] arrayRow = new int[]{x, x+1, x+1, x+1, x, x-1, x-1, x-1};
         final int RESERVED_FIELDS_NUMBER = 8;
@@ -105,12 +106,15 @@ public class Ocean{
         return true;
     }
 
-    public boolean validateNotOverlap(int x, int y, boolean isHorizontal, int length) throws IllegalArgumentException {
+    public boolean validateNotOverlap(int x, int y, boolean isHorizontal, int length) 
+                                        throws IllegalArgumentException 
+        {
         for(int index = 0; index < length; index++){
             
             int[] coordinates = (isHorizontal) ? new int[]{y, x+index} : new int[]{y+index, x};
             
-            if(board.get(coordinates[0]).get(coordinates[1]).getIsShip() || board.get(coordinates[0]).get(coordinates[1]).getIsReserved()){   
+            if(board.get(coordinates[0]).get(coordinates[1]).getIsShip() 
+                || board.get(coordinates[0]).get(coordinates[1]).getIsReserved()){   
                 return false;
             }
         }

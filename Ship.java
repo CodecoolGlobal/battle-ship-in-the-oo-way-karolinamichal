@@ -6,7 +6,7 @@ public class Ship {
     //private int
     private List<Square> listSquareOfShip;
     
-    public Ship(ArrayList<Square> arraySquareNewShip, ArrayList<Square> arrayFieldsReserved){
+    public Ship(List<Square> arraySquareNewShip, List<Square> arrayFieldsReserved){
         listSquareOfShip = new ArrayList<Square>();
         for(Square square : arraySquareNewShip){
             square.setShip();
