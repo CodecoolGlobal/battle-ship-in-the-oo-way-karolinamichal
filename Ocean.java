@@ -89,7 +89,7 @@ public class Ocean{
         }
     }
 
-    public boolean validateNotHangOffEdge(int x, int y, boolean isHorizontal, int length){
+    private boolean validateNotHangOffEdge(int x, int y, boolean isHorizontal, int length){
         if(x < 0 || y < 0 ||  x > WIDTH || y > HEIGHT){
             return false;
         }
@@ -106,7 +106,7 @@ public class Ocean{
         return true;
     }
 
-    public boolean validateNotOverlap(int x, int y, boolean isHorizontal, int length) 
+    private boolean validateNotOverlap(int x, int y, boolean isHorizontal, int length) 
                                         throws IllegalArgumentException 
         {
         for(int index = 0; index < length; index++){
