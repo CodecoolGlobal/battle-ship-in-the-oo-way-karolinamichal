@@ -17,8 +17,8 @@ public class Player {
         possibleShips.put("Destroyer", 2);
     }
 
-    public Player(String num){
-        askForName(num);
+    public Player(String name){
+        askForName(name);
         ocean = new Ocean();
         view = new View();
         //ocean.addShip(1,1,true, 2);
@@ -38,13 +38,13 @@ public class Player {
         return ocean.isSunk(coordinates[0], coordinates[1]);
     }
 
-    public void askForName(String num) {
+    public void askForName(String name) {
         view = new View();
         view.clearScreen();
-        name = view.inputFromUser(String.format("Please insert name of the %s user", num));
+        this.name = view.inputFromUser(String.format("Please insert name of the %s user", name));
         while (name.length() < 1) {
             System.out.println("Your name should consist of at least 1 character");
-            name = view.inputFromUser(String.format("Please insert name of the %s user", num));
+            this.name = view.inputFromUser(String.format("Please insert name of the %s user", name));
         }
     }
 
