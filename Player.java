@@ -49,7 +49,6 @@ public class Player {
     }
 
     public void askForShips() { 
-        
         while (possibleShips.size() > 0) {
             view.clearScreen();
             String title = String.format("%s - time to place your ships!", name);
@@ -77,7 +76,7 @@ public class Player {
         shipName = shipName.substring(0, 1).toUpperCase() + shipName.substring(1).toLowerCase();
         
         while (!possibleShips.containsKey(shipName)){
-            System.out.println("This name is not on the list of permitted ships"); 
+            view.printText("This name is not on the list of permitted ships"); 
             shipName = view.inputFromUser("Please type in the name of the ship you choose");
             shipName = shipName.substring(0, 1).toUpperCase() + shipName.substring(1).toLowerCase();
         }
@@ -85,12 +84,15 @@ public class Player {
     }
 
     public boolean getIsShipHorizontal() {
-        String position = view.inputFromUser("Please type H if you want your ship to be HORIZONTAL or V if VERTICAL").toUpperCase();
-            while (!position.equals("H") && !position.equals("V")) {
-                System.out.println(position);
-                System.out.println("Wrong input.");
-                position = view.inputFromUser("Please type H if you want your ship to be HORIZONTAL or V if VERTICAL").toUpperCase();
-            }
+        String order = "Please type H if you want your ship to be HORIZONTAL or V if VERTICAL";
+        String position = view.inputFromUser(order).toUpperCase();
+
+        while (!position.equals("H") && !position.equals("V")) {
+            view.printText(position);
+            view.printText("Wrong input.");
+            position = view.inputFromUser(order).toUpperCase();
+        }
+        
         boolean isHorizontal = (position.equals("H")) ? true : false;
         
         return isHorizontal;
