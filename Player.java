@@ -92,14 +92,15 @@ public class Player {
             view.printText("Wrong input.");
             position = view.inputFromUser(order).toUpperCase();
         }
-        
+
         boolean isHorizontal = (position.equals("H")) ? true : false;
         
         return isHorizontal;
     }
 
     public int[] getShipCoordinates() {
-        String coordinates = view.inputFromUser("What is the starting point of your ship? Type it in '1A' format").toUpperCase();
+        String order = "What is the starting point of your ship? Type it in '1A' format";
+        String coordinates = view.inputFromUser(order).toUpperCase();
         String[] possibleNumbers = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         List<String> possibleNumbersList = Arrays.asList(possibleNumbers);
         String[] possibleLetters = new String[] {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
@@ -107,11 +108,14 @@ public class Player {
         String firstSign = (coordinates.length() > 2) ? coordinates.substring(0,2) : coordinates.substring(0,1);
         String secondSign = (coordinates.length() > 2) ? coordinates.substring(2) : coordinates.substring(1);
         
-        while (!possibleLettersList.contains(secondSign) || !possibleNumbersList.contains(firstSign) || (coordinates.length() > 2 && !coordinates.substring(0,2).equals("10"))) {
-            coordinates = view.inputFromUser("What is the starting point of your ship? Type it in '1A' format").toUpperCase();
+        while (!possibleLettersList.contains(secondSign) || !possibleNumbersList.contains(firstSign) 
+                || (coordinates.length() > 2 && !coordinates.substring(0,2).equals("10"))) 
+            {
+            coordinates = view.inputFromUser(order).toUpperCase();
             firstSign = (coordinates.length() > 2) ? coordinates.substring(0,2) : coordinates.substring(0,1);
             secondSign = (coordinates.length() > 2) ? coordinates.substring(2) : coordinates.substring(1);
         }
+        
         int[] finalCoordinates = translateFromStringToCoordinates(coordinates);
 
         return finalCoordinates;
