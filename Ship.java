@@ -27,6 +27,15 @@ public class Ship {
         return true;
     }
 
+    public boolean isSquareInShip(Square findSquare){
+        for(Square square : listSquareOfShip){
+            if(square == findSquare){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean isShooted(Square squareWithCoordinates){
         squareWithCoordinates.setChosen();
         for(Square square: listSquareOfShip){

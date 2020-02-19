@@ -24,7 +24,7 @@ public class Ocean{
 
     }
 
-    public boolean shoot(int x, int y){
+    public boolean isShoot(int x, int y){
         for(Ship ship: shipsArray){
             if(ship.isShooted(board.get(y).get(x))){
                 return true;
@@ -32,6 +32,17 @@ public class Ocean{
         }
         return false;
     } 
+
+    public boolean isSunk(int x, int y){
+        for(Ship ship: shipsArray){
+            if(ship.isSquareInShip(board.get(y).get(x))){
+                if(ship.isSunk()){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public boolean addShip(int x, int y, boolean isHorizontal, int length){
         boolean isValid = validateNotHangOffEdge(x, y, isHorizontal, length);

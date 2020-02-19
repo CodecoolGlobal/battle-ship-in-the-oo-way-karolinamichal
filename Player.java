@@ -7,8 +7,8 @@ public class Player {
     private String name;
     private Ocean ocean;
     private View view;
-    private static HashMap<String, Integer> possibleShips;
-    static {
+    private HashMap<String, Integer> possibleShips;
+    {
         possibleShips = new HashMap<>();
         possibleShips.put("Carrier", 5);
         possibleShips.put("Battleship", 4);
@@ -21,7 +21,21 @@ public class Player {
         askForName(num);
         ocean = new Ocean();
         view = new View();
-        // askForShips(); <--- odkomentować do właściwej gry!!!
+        //ocean.addShip(1,1,true, 2);
+        //askForShips();// <--- odkomentować do właściwej gry!!!
+
+    }
+
+    public boolean hasLost(){
+        return ocean.hasLost();
+    }
+
+    public boolean shoot(int[] coordinates){
+        return ocean.isShoot(coordinates[0],coordinates[1]);
+    }
+
+    public boolean isSunk(int[] coordinates){
+        return ocean.isSunk(coordinates[0], coordinates[1]);
     }
 
     public void askForName(String num) {
