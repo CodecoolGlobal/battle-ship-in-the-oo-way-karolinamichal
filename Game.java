@@ -33,11 +33,9 @@ public class Game {
             view.printOcean(currentPlayer.getOcean(), hasStarted);
 
             int[] coordinatesAsInt = getCoordinates(coordinatesAsString);
-            boolean wasShoot = currentPlayer.shoot(coordinatesAsInt);
 
-            textToDisplay = wasShoot ? "You hit!" : "You miss!" ;
-            wasShoot = currentPlayer.isSunk(coordinatesAsInt);
-            textToDisplay = wasShoot ? "Hit and sunk!": textToDisplay;
+            textToDisplay = shoot(coordinatesAsInt);
+
             view.printText(textToDisplay);
             if(player1.hasLost() || player2.hasLost()){
                 isGamming = false;
@@ -49,6 +47,16 @@ public class Game {
         }
 
         view.printText(String.format("Congratoulations %s! You Won!", turnOfPlayer()));
+    }
+
+    private String shoot(int[] coordinatesAsInt){
+        boolean wasShoot = currentPlayer.shoot(coordinatesAsInt);
+        String textToDisplay = wasShoot ? "You hit!" : "You miss!" ;
+
+        wasShoot = currentPlayer.isSunk(coordinatesAsInt);
+        textToDisplay = wasShoot ? "Hit and sunk!": textToDisplay;
+
+        return textToDisplay;
     }
 
     private int[] getCoordinates(String coordinatesAsString){
