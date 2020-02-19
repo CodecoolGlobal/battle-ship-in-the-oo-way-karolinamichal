@@ -5,7 +5,6 @@ public class Ocean{
 
     List<ArrayList<Square>> board;
     List<Ship> shipsArray;
-    Ship ship;
 
     final static int WIDTH = 10;
     final static int HEIGHT = 10;
