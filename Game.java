@@ -1,7 +1,7 @@
 import java.util.regex.Pattern;
 
 public class Game {
-    private boolean hasStarted; //false jeśli jesteśmy w fazie przygtowań, true gdy rozpocznie się rozgrywka
+    private boolean hasStarted; //false if game is not began, true when the game is began 
     private Player currentPlayer;
     private Player player1;
     private Player player2;
@@ -16,9 +16,7 @@ public class Game {
     private void prepareToGame() {
         player1 = new Player("first");
         player2 = new Player("second");
-        // player1.getOcean().addShip(0, 0, true, 2);
-        // player2.getOcean().addShip(0, 0, false, 2);
-        
+
         currentPlayer = player2;
     }
 
