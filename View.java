@@ -3,10 +3,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class View {
-    
-    public View(){ 
-        // nie wiem czy coś tu w ogóle musi być
-    }
 
     public void printOcean(Ocean currentOcean, boolean hasGameStarted) {
         System.out.println(currentOcean.toString(hasGameStarted));
