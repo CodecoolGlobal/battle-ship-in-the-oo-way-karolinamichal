@@ -29,30 +29,35 @@ This class use to define player.
     * It return true if the ship contains this Square is sunk
 
 5. askForName(String name)
-    * This method get name of player
-    * This method ask user about its name
-    * It attribute it to field name
+    * This method gets name of player
+    * This method asks user about its name
+    * It attributes answer to field name
 
 6. askForShips()
-    * This method assign ships to Ocean in correct position.
+    * This method assigns ships to Ocean in a correct position.
 
 7. getShipName()
-    * 
+    * This method asks user about what type of ship user would like put in ocean.
+    * The method return name of ship in String type
 
 8. getIsShipHorizontal()
-    * 
+    * This method asks user about setting ship in board, horizontal or vertical.
+    * If a answer is horizontal the method return true.
+    * If a answer is vertical the method return false.
 
 9. getShipCoordinates()
-    * 
+    * This method asks user about coordinaters new ship.
+    * When coordinaters are correct method return coordinaters as array of int.
 
 10. translateFromStringToCoordinates(String coordinatesAsString)
-    *       
+    * This method transforms coordinaters from String type to int array type.
+    * The method returns array of int. 
 
 11. getOcean()
-    * 
+    * This method returns ocean field.
 
 12. getName()
-    * 
+    * This method returns name field.
 
 13. setName(String name)
-    * 
+    * This method sets name field.
