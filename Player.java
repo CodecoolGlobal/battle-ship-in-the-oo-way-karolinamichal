@@ -64,7 +64,7 @@ public class Player {
             if (isAdded) {
                 possibleShips.remove(shipName);
             } else {
-                view.printText("You can't put your ship there. Try again!"); // może to dobre miejsce na łapanie wyjątków z addship?
+                view.printText("You can't put your ship there. Try again!");
             }
         }
     }
