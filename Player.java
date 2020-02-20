@@ -21,9 +21,7 @@ public class Player {
         askForName(numOfUser);
         ocean = new Ocean();
         view = new View();
-        //ocean.addShip(1,1,true, 2);
-        //askForShips();// <--- odkomentować do właściwej gry!!!
-
+        askForShips();// <--- odkomentować do właściwej gry!!!
     }
 
     public boolean hasLost(){
@@ -122,7 +120,6 @@ public class Player {
     }
 
     private int[] translateFromStringToCoordinates(String coordinatesAsString){
-        // skopiowałam tą funkcję z game() bo potrzebowałam jej tutaj
         String[] alfabet = new String[] {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
         int lenghtArrayOfAlfabet = alfabet.length;
         int X_INDEX = 1;

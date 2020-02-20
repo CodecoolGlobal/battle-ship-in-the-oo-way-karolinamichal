@@ -1,7 +1,7 @@
 __[back to README](../README.md)__
 
 # Description
-This class use to launch game. 
+This class is used to launch game. 
 
 # Fields
 * hasStarted - type boolean - contain information about start or stop game.

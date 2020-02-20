@@ -24,6 +24,7 @@ public class View {
 
     public String inputFromUser(String textToView){
         System.out.println(" " + textToView + ":");
+        System.out.print(" ");
         Scanner scannerFromUser = new Scanner(System.in);
         String input = scannerFromUser.nextLine();
         
@@ -37,7 +38,7 @@ public class View {
     }
 
     public void printText(String text){
-        System.out.println(text);
+        System.out.println(" " + text);
     }
 
     public void clearScreen() {  

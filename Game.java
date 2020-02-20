@@ -16,8 +16,8 @@ public class Game {
     private void prepareToGame() {
         player1 = new Player("first");
         player2 = new Player("second");
-        player1.getOcean().addShip(0, 0, true, 2);
-        player2.getOcean().addShip(0, 0, false, 2);
+        // player1.getOcean().addShip(0, 0, true, 2);
+        // player2.getOcean().addShip(0, 0, false, 2);
         
         currentPlayer = player2;
     }
@@ -29,7 +29,7 @@ public class Game {
         boolean isGamming = true;
         while(isGamming){
             view.clearScreen();
-            view.printText(String.format("Turn of %s", turnOfPlayer()));
+            view.printTitle(String.format("It's %s's turn to strike!", turnOfPlayer()));
             view.printOcean(currentPlayer.getOcean(), hasStarted);
 
             int[] coordinatesAsInt = getCoordinates(coordinatesAsString);
@@ -60,16 +60,16 @@ public class Game {
     }
 
     private int[] getCoordinates(String coordinatesAsString){
-        String[] coordiateAsArray = new String[] {};
+        String[] coordinateAsArray = new String[] {};
         boolean isIncorrectInput = true;;
         while(isIncorrectInput){
-            coordinatesAsString = view.inputFromUser("Please insert a coordinates to attack");
+            coordinatesAsString = view.inputFromUser("Please insert coordinates to attack").toUpperCase();
             if(checkCoordinates(coordinatesAsString)){
                 isIncorrectInput = false;
-                coordiateAsArray = transformToCorrectCoordinates(coordinatesAsString);
+                coordinateAsArray = transformToCorrectCoordinates(coordinatesAsString);
             }
         }
-        int[] coordinatesAsInt = translateFromStringToCoordinates(coordiateAsArray);
+        int[] coordinatesAsInt = translateFromStringToCoordinates(coordinateAsArray);
         return coordinatesAsInt;
     }
 
