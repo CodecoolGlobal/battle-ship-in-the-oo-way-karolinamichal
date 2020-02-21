@@ -15,7 +15,7 @@ public class Ocean{
         for(int iRow = 0; iRow < HEIGHT; iRow++ ){
             ArrayList<Square> row = new ArrayList<Square>();
             
-            for(int iCol = 0; iCol < WIDTH; iCol++ ){
+            for(int iCol = 0; iCol < WIDTH; iCol++){
                 Square newSquare = new Square();
                 row.add(newSquare);
             }
@@ -24,9 +24,9 @@ public class Ocean{
 
     }
 
-    public boolean isShoot(int x, int y){
+    public boolean isShot(int x, int y){
         for(Ship ship: shipsArray){
-            if(ship.isShooted(board.get(y).get(x))){
+            if(ship.isShot(board.get(y).get(x))){
                 return true;
             }
         }
@@ -53,15 +53,15 @@ public class Ocean{
         if(!isValid){
             return false;
         }
-        List<Square> arraySquare = new ArrayList<Square>();
-        List<Square> arrayFieldsReserved = new ArrayList<Square>();
+        List<Square> squaresArray = new ArrayList<Square>();
+        List<Square> reservedFieldsArray = new ArrayList<Square>();
 
         for(int index = 0; index < length; index++){
             int[] coordinates = (isHorizontal) ? new int[]{y, x+index} : new int[]{y+index, x};
-            arraySquare.add(board.get(coordinates[0]).get(coordinates[1]));
-            addReservedFields(coordinates[1], coordinates[0], arrayFieldsReserved);
+            squaresArray.add(board.get(coordinates[0]).get(coordinates[1]));
+            addReservedFields(coordinates[1], coordinates[0], reservedFieldsArray);
         }
-        Ship newShip = new Ship(arraySquare, arrayFieldsReserved);
+        Ship newShip = new Ship(squaresArray, reservedFieldsArray);
         shipsArray.add(newShip);
 
         return true;
@@ -76,7 +76,7 @@ public class Ocean{
         return true;
     }
 
-    private void addReservedFields(int x, int y, List<Square> arrayFieldsReserved){
+    private void addReservedFields(int x, int y, List<Square> reservedFieldsArray){
         int[] arrayCol = new int[]{y+1, y+1, y, y-1, y-1, y-1, y, y+1};
         int[] arrayRow = new int[]{x, x+1, x+1, x+1, x, x-1, x-1, x-1};
         final int RESERVED_FIELDS_NUMBER = 8;
@@ -84,7 +84,7 @@ public class Ocean{
         for(int index = 0; index < RESERVED_FIELDS_NUMBER; index++){
             if(arrayCol[index] < WIDTH && arrayRow[index] < HEIGHT && arrayCol[index] >= 0 
                && arrayRow[index] >= 0)
-                arrayFieldsReserved.add(board.get(arrayCol[index]).get(arrayRow[index]));
+                reservedFieldsArray.add(board.get(arrayCol[index]).get(arrayRow[index]));
         }
     }
 
@@ -107,7 +107,7 @@ public class Ocean{
 
     private boolean validateNotOverlap(int x, int y, boolean isHorizontal, int length) 
                                         throws IllegalArgumentException 
-        {
+        { // czy to wystarczy jako obsługa wyjątków?
         for(int index = 0; index < length; index++){
             
             int[] coordinates = (isHorizontal) ? new int[]{y, x+index} : new int[]{y+index, x};

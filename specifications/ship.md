@@ -1,22 +1,22 @@
 __[back to README](../README.md)__
 
 # Description
-This class use to create one ship on board. 
+This class is used to create one ship on board or check whether it was shot or sunk. 
 
 # Fields
-* listSquareOfShip - type List<Square> - This list contain squares which are part of ship 
+* **listOfSquaresInShip** - type List<Square> - This list contain squares which are part of ship 
 
 # Methods
-1. Ship(ArrayList<Square> arraySquareNewShip, ArrayList<Square> arrayFieldsReserved)
-    * This costructor creates a new ship and it adds to Square of Ship to list listSquareOfShip. Later this constructor sets field isReserved on true in surrounding this ship Squares.
+1. Ship(List<Square> newShipSquaresArray, List<Square> reservedFieldsArray)
+    * This costructor creates a new ship by adding its fields to listOfSquaresInShip and changing their isShip fields to true.
+    * It also takes the array of reserved fields and change their isReserved field to true.
 
 2. isSunk()
-    * This method return true if all of Squares of Ship was shooted. If not method return false.
+    * This method returns true if all of Squares in Ship was shot. If not method returns false.
 
 3. isSquareInShip(Square findSquare)
-    * This method check if Ship contain findSquare. 
-    * If yes return true, if not return false.
+    * This method returns true if Ship contains findSquare.
 
-4. isShooted(Square squareWithCoordinates)
-    * This method change filed chosen in Square to true value. 
-    * It return true if square is part of Ship. If else return false.
+4. isShot(Square squareWithCoordinates)
+    * This method changes isChosen field in Square to true value. 
+    * It returns true if square is part of Ship. If else, it returns false.

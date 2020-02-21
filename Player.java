@@ -21,7 +21,7 @@ public class Player {
         askForName(numOfUser);
         ocean = new Ocean();
         view = new View();
-        askForShips();// <--- odkomentować do właściwej gry!!!
+        askForShips(); // <--- odkomentować do właściwej gry!!!
     }
 
     public boolean hasLost(){
@@ -29,7 +29,7 @@ public class Player {
     }
 
     public boolean shoot(int[] coordinates){
-        return ocean.isShoot(coordinates[0],coordinates[1]);
+        return ocean.isShot(coordinates[0],coordinates[1]);
     }
 
     public boolean isSunk(int[] coordinates){
@@ -49,8 +49,7 @@ public class Player {
     private void askForShips() { 
         while (possibleShips.size() > 0) {
             view.clearScreen();
-            String title = String.format("%s - time to place your ships!", name);
-            view.printTitle(title);
+            view.printTitle(String.format("%s - time to place your ships!", name));
             view.printOcean(ocean, false);
             view.printPossibleShips(possibleShips);
             
@@ -63,9 +62,7 @@ public class Player {
 
             if (isAdded) {
                 possibleShips.remove(shipName);
-            } else {
-                view.printText("You can't put your ship there. Try again!");
-            }
+            } 
         }
     }
     
@@ -86,11 +83,9 @@ public class Player {
         String position = view.inputFromUser(order).toUpperCase();
 
         while (!position.equals("H") && !position.equals("V")) {
-            view.printText(position);
             view.printText("Wrong input.");
             position = view.inputFromUser(order).toUpperCase();
         }
-
         boolean isHorizontal = (position.equals("H")) ? true : false;
         
         return isHorizontal;
@@ -99,10 +94,12 @@ public class Player {
     private int[] getShipCoordinates() {
         String order = "What is the starting point of your ship? Type it in '1A' format";
         String coordinates = view.inputFromUser(order).toUpperCase();
+        
         String[] possibleNumbers = new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         List<String> possibleNumbersList = Arrays.asList(possibleNumbers);
         String[] possibleLetters = new String[] {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J"};
         List<String> possibleLettersList = Arrays.asList(possibleLetters);
+        
         String firstSign = (coordinates.length() > 2) ? coordinates.substring(0,2) : coordinates.substring(0,1);
         String secondSign = (coordinates.length() > 2) ? coordinates.substring(2) : coordinates.substring(1);
         
@@ -113,7 +110,6 @@ public class Player {
             firstSign = (coordinates.length() > 2) ? coordinates.substring(0,2) : coordinates.substring(0,1);
             secondSign = (coordinates.length() > 2) ? coordinates.substring(2) : coordinates.substring(1);
         }
-
         int[] finalCoordinates = translateFromStringToCoordinates(coordinates);
 
         return finalCoordinates;

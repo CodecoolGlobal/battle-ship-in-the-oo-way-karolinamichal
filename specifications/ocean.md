@@ -1,45 +1,44 @@
 __[back to README](../README.md)__
 
 # Description
-This class use to define ocean for each player. 
+This class is used to create ocean for each player and operate ships on it. 
 
 # Fields
-* board - type List<ArrayList<Square>> - It is list of list of Squares.
-* shipsArray - type List<Ship> - List contain Ships.
-* WIDTH - type final int - width of board.
-* HEIGTH - type final int - heigth of board.
+* **board** - type List<ArrayList<Square>> - It is a list of list of Squares.
+* **shipsArray** - type List<Ship> - List containong Ships.
+* **WIDTH** - type final int - width of board.
+* **HEIGTH** - type final int - heigth of board.
 
 # Methods
 1. Ocean()
-    * The constructor fills board squares.
+    * The constructor that fills board with squares.
 
-2. isShoot(int x, int y)
-    * This method return true if coordinates indicate part of a ship.
-    * If not method return false.
+2. isShot(int x, int y)
+    * This method returns true if coordinates are part of a ship.
+    * If not method returns false.
 
 3. isSunk(int x, int y)
-    * This method return true if coordinates indicate part of sunken ship.
-    * If not method return false.
+    * This method returns true if coordinates indicate part of sunk ship.
+    * If not method returns false.
 
 4. addShip(int x, int y, boolean isHorizontal, int length)
-    * This method add new ship to Ocean.
+    * This method calls validation methods and if request passes the validation, it adds new ship to the Ocean.
 
 5. hasLost()
-    * This method check if all ship in Ocean is sunk.
-    * If it is return true, if it is not return false.
+    * This method checks if all ships in Ocean are sunk.
+    * If they are, method returns true, otherwise it returns false.
 
-6. addReservedFields(int x, int y, List<Square> arrayFieldsReserved)
-    * This method add Square around new ship to array arrayFieldsReserved.
+6. addReservedFields(int x, int y, List<Square> reservedFieldsArray)
+    * This method adds squares around new ship to array reservedFieldsArray, to mark which fields are protected from putting other ships there.
 
 7. validateNotHangOffEdge(int x, int y, boolean isHorizontal, int length)
-    * This method check if is possible add new ship about this parameter to board.
-    * If it's possible return true.
-    * If it's inpossible return false. 
+    * This method checks if it is possible to add new ship with given parameters to the board.
+    * it checks whether the whole ship can be placed on the given spot without any part of it hanging off the egdes.
 
 8. validateNotOverlap(int x, int y, boolean isHorizontal, int length)
-    * This method check if new ship can be put in these coordinates
-    * If these coordinates are occupied by other ship method will return false.
-    * If these coordinates are free return true.
+    * This method checks if new ship can be put on squares with given coordinates
+    * If these coordinates are occupied by another ship, the method will return false.
+    * If these coordinates are free, it will return true.
 
 9. toString(boolean hasGameStarted)
-    * This method use to print board in human-frendly view.
+    * This method is used to print board in human-frendly format.

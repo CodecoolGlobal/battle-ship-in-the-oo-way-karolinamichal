@@ -3,22 +3,22 @@ import java.util.List;
 
 public class Ship {
     
-    private List<Square> listSquareOfShip;
+    private List<Square> listOfSquaresInShip;
     
-    public Ship(List<Square> arraySquareNewShip, List<Square> arrayFieldsReserved){
-        listSquareOfShip = new ArrayList<Square>();
-        for(Square square : arraySquareNewShip){
+    public Ship(List<Square> newShipSquaresArray, List<Square> reservedFieldsArray){
+        listOfSquaresInShip = new ArrayList<Square>();
+        
+        for(Square square : newShipSquaresArray){
             square.setShip();
-            listSquareOfShip.add(square);
+            listOfSquaresInShip.add(square);
         }
-
-        for(Square square : arrayFieldsReserved){
+        for(Square square : reservedFieldsArray){
             square.setReserved();
         }
     }
 
     public boolean isSunk(){
-        for(Square square : listSquareOfShip){
+        for(Square square : listOfSquaresInShip){
             if(!square.getIsChosen()){
                 return false;
             }
@@ -27,7 +27,7 @@ public class Ship {
     }
 
     public boolean isSquareInShip(Square findSquare){
-        for(Square square : listSquareOfShip){
+        for(Square square : listOfSquaresInShip){
             if(square == findSquare){
                 return true;
             }
@@ -35,9 +35,9 @@ public class Ship {
         return false;
     }
 
-    public boolean isShooted(Square squareWithCoordinates){
+    public boolean isShot(Square squareWithCoordinates){
         squareWithCoordinates.setChosen();
-        for(Square square: listSquareOfShip){
+        for(Square square: listOfSquaresInShip){
             if(square == squareWithCoordinates){
                 return true;
             }

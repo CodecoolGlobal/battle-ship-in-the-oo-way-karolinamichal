@@ -1,12 +1,12 @@
 __[back to README](../README.md)__
 
 # Description
-This class use to run program. 
+This class is used to run program. 
 
 # Fields
-This class doesn't contain any fields 
+This class doesn't contain any fields.
 
 # Methods
 1. main
-    * This method runs the program.
+    * This method runs the program by creating new Game() object.
 

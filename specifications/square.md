@@ -1,37 +1,37 @@
 __[back to README](../README.md)__
 
 # Description
-This class use to create one cell of board. 
+This class is used to create one cell of board. 
 
 # Fields
-* isShip - type boolean - inform user if this square is part of a ship
-* isReserved - type boolean - inform user if on this square user can put a ship
-* isChosen - type boolean - inform user if this square has been shoot
+* **isShip** - type boolean - informs user if this square is part of a ship.
+* **isReserved** - type boolean - informs user if on this square user can put a ship.
+* **isChosen** - type boolean - informs user if this square has been shot.
 
 # Methods
 1. getIsShip()
-    * This method return value(boolean) of fields isShip.
+    * This method returns default value(boolean) of fields isShip.
     
 2. setShip()
-    * This method set field isShip as true.
-    * This method doesn't have return value.
+    * This method sets field isShip as true.
+    * This method doesn't have any return value.
 
 3. getIsReserved()
-    * This method return value(boolean) of fields isReserved.
+    * This method returns value(boolean) of fields isReserved.
 
 4. setReserved()
-    * This method set field isReserved as true.
-    * This method doesn't have return value.
+    * This method sets field isReserved as true.
+    * This method doesn't have any return value.
 
 5. getIsChosen()
-    * This method return value(boolean) of fields isChosen.
+    * This method returns value(boolean) of fields isChosen.
 
 6. setChosen()
-    * This method set field isChosen as true.
-    * This method doesn't have return value.
+    * This method sets field isChosen as true.
+    * This method doesn't have any return value.
 
 7. toString(Game currentGame)
-    * This method return Square as a String.
+    * This method returns Square as a String.
     * It gets one parameter:
-        * currentGame as a type of Game. 
+        * boolean - hasGameStarted. 
     

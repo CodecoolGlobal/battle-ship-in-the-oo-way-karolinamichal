@@ -1,7 +1,7 @@
 import java.util.regex.Pattern;
 
 public class Game {
-    private boolean hasStarted; //false if game is not began, true when the game is began 
+    private boolean hasStarted;
     private Player currentPlayer;
     private Player player1;
     private Player player2;
@@ -24,42 +24,40 @@ public class Game {
         hasStarted = true;
         String textToDisplay = "";
         String coordinatesAsString = "";
-        boolean isGamming = true;
-        while(isGamming){
+        boolean isGaming = true;
+        while(isGaming){
             view.clearScreen();
             view.printTitle(String.format("It's %s's turn to strike!", turnOfPlayer()));
             view.printOcean(currentPlayer.getOcean(), hasStarted);
 
             int[] coordinatesAsInt = getCoordinates(coordinatesAsString);
-
             textToDisplay = shoot(coordinatesAsInt);
             view.printText(textToDisplay);
 
             if(player1.hasLost() || player2.hasLost()){
-                isGamming = false;
-            }
-            else{
+                isGaming = false;
+            } else{
                 changeCurrentPlayer();
                 view.inputFromUser("Press Enter to continue");
             }
         }
-
         view.printText(String.format("Congratoulations %s! You Won!", turnOfPlayer()));
     }
 
     private String shoot(int[] coordinatesAsInt){
-        boolean wasShoot = currentPlayer.shoot(coordinatesAsInt);
-        String textToDisplay = wasShoot ? "You hit!" : "You miss!" ;
+        boolean wasShot = currentPlayer.shoot(coordinatesAsInt);
+        String textToDisplay = wasShot ? "You hit!" : "You miss!";
 
-        wasShoot = currentPlayer.isSunk(coordinatesAsInt);
-        textToDisplay = wasShoot ? "Hit and sunk!": textToDisplay;
+        wasShot = currentPlayer.isSunk(coordinatesAsInt);
+        textToDisplay = wasShot ? "Hit and sunk!": textToDisplay;
 
         return textToDisplay;
     }
 
     private int[] getCoordinates(String coordinatesAsString){
         String[] coordinateAsArray = new String[] {};
-        boolean isIncorrectInput = true;;
+        boolean isIncorrectInput = true;
+        
         while(isIncorrectInput){
             coordinatesAsString = view.inputFromUser("Please insert coordinates to attack").toUpperCase();
             if(checkCoordinates(coordinatesAsString)){
@@ -68,6 +66,7 @@ public class Game {
             }
         }
         int[] coordinatesAsInt = translateFromStringToCoordinates(coordinateAsArray);
+        
         return coordinatesAsInt;
     }
 
@@ -93,6 +92,7 @@ public class Game {
 
     private boolean checkCoordinates(String coordinatesAsString){
         Pattern pattern = Pattern.compile("([1-9][0]?[A-J])|([A-J][0-9][0]?)");
+        
         if (coordinatesAsString == null) {
             return false; 
         }
@@ -106,11 +106,10 @@ public class Game {
         if(pattern.matcher(coordinatesAsString).matches()){
             arrayCoordinates[0] = (coordinatesAsString.length() > 2) ? coordinatesAsString.substring(0,2) : coordinatesAsString.substring(0,1);
             arrayCoordinates[1] = (coordinatesAsString.length() > 2) ? coordinatesAsString.substring(2) : coordinatesAsString.substring(1);
-        }else{
+        } else{
             arrayCoordinates[0] = coordinatesAsString.substring(0,1);
             arrayCoordinates[1] = coordinatesAsString.length() > 2 ? coordinatesAsString.substring(1,3) : coordinatesAsString.substring(1,2);
         }        
-        
         return arrayCoordinates;
     }
     
@@ -134,7 +133,6 @@ public class Game {
                 coordinatesAsInt[Y_INDEX] = index;
             }
         }
-
         return coordinatesAsInt;
     }
 
